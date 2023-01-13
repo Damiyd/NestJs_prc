@@ -14,7 +14,8 @@ export class MoviesController {
     }    
     
     @Get(":id")    // url 이름과 밑에 Param 이름은 같아야함 하지만 뒤에 타입 지정으로 나오는 이름은 달라도 됨
-    getOne(@Param("id") movieId:string): Movie {
+    getOne(@Param("id") movieId: number): Movie {
+        console.log(typeof movieId)
         return this.moivesService.getOne(movieId)
     }
 
@@ -24,12 +25,12 @@ export class MoviesController {
     }
 
     @Delete(":id")
-    remove(@Param("id") movieId:string) {
+    remove(@Param("id") movieId:number) {
         return this.moivesService.deleteOne(movieId);
     }
 
     @Patch(":id")
-    patch(@Param("id") movieId:string, @Body() updateData) {
+    patch(@Param("id") movieId:number, @Body() updateData) {
         return this.moivesService.update(movieId, updateData);
     }
 
